@@ -1,0 +1,32 @@
+name: Build Windows App
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Repó letöltése
+        uses: actions/checkout@v4
+
+      - name: Node.js beállítása
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Függőségek telepítése
+        working-directory: client
+        run: npm install
+
+      - name: Windows telepítő buildelése
+        working-directory: client
+        run: npm run dist
+
+      - name: Telepítő feltöltése
+        uses: actions/upload-artifact@v4
+        with:
+          name: LarpCity-Windows
+          path: client/dist/*.exe
