@@ -1,0 +1,35 @@
+{
+  "name": "larpcity",
+  "version": "1.0.0",
+  "description": "LarpCity - saját chat alkalmazás",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.5"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "hu.lytic.larpcity",
+    "productName": "LarpCity",
+    "files": [
+      "src/**/*",
+      "config.json",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "src/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
