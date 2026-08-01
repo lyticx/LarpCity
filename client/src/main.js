@@ -18,7 +18,6 @@ function createWindow() {
   });
 
   win.loadFile(path.join(__dirname, "index.html"));
-  win.webContents.openDevTools({ mode: "bottom" });
 }
 
 app.whenReady().then(() => {
